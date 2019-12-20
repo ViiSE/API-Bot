@@ -29,8 +29,8 @@ hs    sh                       `m/   `ds
 Bot for testing API
 
 # Usage
-API Bot needs settings.json to work. It should be located in the same directory as the executable jar. 
-  Otherwise, you must specify the file path through the command line argument.
+API Bot needs settings.json to work. It should be located in the same directory as the executable jar.</br>
+Otherwise, you must specify the file path through the command line argument.
 <pre>
 settings.json
 {
