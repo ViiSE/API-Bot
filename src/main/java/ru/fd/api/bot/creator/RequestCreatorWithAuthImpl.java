@@ -2,6 +2,7 @@ package ru.fd.api.bot.creator;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import ru.fd.api.bot.constant.Methods;
 import ru.fd.api.bot.data.RequestPojo;
 import ru.fd.api.bot.entity.Request;
 import ru.fd.api.bot.producer.entity.RequestProducer;

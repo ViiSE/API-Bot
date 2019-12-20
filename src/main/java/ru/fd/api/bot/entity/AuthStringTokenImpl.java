@@ -16,7 +16,5 @@ public class AuthStringTokenImpl implements Auth<String> {
     }
 
     @Override
-    public String body() {
-        return type + " " + token;
-    }
+    public String body() { return type + " " + token; }
 }

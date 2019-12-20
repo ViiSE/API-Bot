@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Response;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import ru.fd.api.bot.constant.Auths;
 import ru.fd.api.bot.constant.Methods;
 import ru.fd.api.bot.constant.RequestResults;
 import ru.fd.api.bot.exception.RequestException;
@@ -40,10 +41,13 @@ public class GetRequestDefaultImpl implements Request<Map<String, Object>> {
                     .build();
             okhttp3.Request request;
 
-            if(method.equals(Methods.GET))
+            if(auth.body().contains(Auths.NONE))
+                 request = new okhttp3.Request.Builder()
+                        .url(url)
+                        .build();
+            else if(method.equals(Methods.GET))
                 request = new okhttp3.Request.Builder()
                         .url(url)
-                        .addHeader("Authorization", auth.body())
                         .build();
             else
                 throw new RequestException("Method: " + method + " is not GET method.");
