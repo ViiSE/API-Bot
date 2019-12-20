@@ -81,10 +81,10 @@ settings.json
  - <b>filename</b> - The bot result will be written to this file
  - <b>hostname</b> - API service address
  - <b>repeat</b> - Repeat requests chain count
- - (<i>optional</i>) <b>auth</b> - Global authentication method to be written to the header. If it's present, then auth method will be applied to all requests in requests list.
-  * <b>type</b> - Аuthentication type
-  * <b>token</b> - API token
+ - (<i>optional</i>) <b>auth</b> - Global authentication method to be written to the header. If it's present, then auth method will be applied to all requests in requests list
+  *  <b>type</b> - Аuthentication type
+  *  <b>token</b> - API token
  - <b>requests</b> - List of requests
-  * <b>method</b> - Method type
-  * <b>url</b> - point address (without hostname)
-  * (<i>optional</i>) <b>auth</b> - Local authentication method to be written to the header. If it's present and global <b>auth</b> is also present, then the local method will be applied. If both of these methods are absent, bot will throw an exception
+  *  <b>method</b> - Method type
+  *  <b>url</b> - point address (without hostname)
+  *  (<i>optional</i>) <b>auth</b> - Local authentication method to be written to the header. If it's present and global <b>auth</b> is also present, then the local method will be applied. If both of these methods are absent, bot will throw an exception
