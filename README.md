@@ -1,3 +1,9 @@
+<style type="text/css">
+  pre {
+    background-color: #ffffff;
+  }
+</style>
+
 <pre> 
                   `hy`
                  `hmmh.
@@ -13,7 +19,7 @@
         `hs.smhhhhhhhhhhhhhm/:m:               \       _ \   _ _|         __ )            |
        -yh  `hmhhhhhhhhhhdmy  smd/            _ \     |   |    |          __ \     _ \    __|
     -/ymm.    /hmdddddddmy:   `mmh+/.        ___ \    ___/     |          |   |   (   |   |
- -oo- -m+       `:/+++/-`      +m.  /s-    _/    _\  _|      ___|        ____/   \___/   \__| (v. 1.0)
+ -oo- -m+       `:/+++/-`      +m.  /s-    _/    _\  _|      ___|        ____/   \___/   \__|
 hs    sh                       `m/   `ds
 -d+  `m:                        od `-hy.
  `mmdhd                         .mymms
