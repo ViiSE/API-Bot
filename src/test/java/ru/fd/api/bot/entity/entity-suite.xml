@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="EntitySuite">
+
+    <test name="EntitySuiteTest">
+        <parameter name="filename" value="/some/file"/>
+        <parameter name="repeat" value="1"/>
+
+        <parameter name="type" value="Bearer"/>
+        <parameter name="token" value="'Token here'"/>
+
+        <parameter name="url" value="http://www.api.bot/rest/points/point"/>
+        <parameter name="method" value="GET"/>
+
+        <classes>
+            <class name="ru.fd.api.bot.entity.AuthStringTokenTestNG"/>
+            <class name="ru.fd.api.bot.entity.RequestResultMapDefaultTestNG"/>
+            <class name="ru.fd.api.bot.entity.SettingsDefaultTestNG"/>
+        </classes>
+    </test>
+
+</suite>

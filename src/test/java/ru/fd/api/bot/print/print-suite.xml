@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="PrintSuite">
+
+    <test name="PrintSuiteTest">
+        <parameter name="filename" value="printer-test"/>
+        <parameter name="url" value="http://www.api.bot/rest/points/point"/>
+        <parameter name="method" value="GET"/>
+        <parameter name="message" value="hi"/>
+
+        <classes>
+            <class name="ru.fd.api.bot.print.PrinterDefaultTestNG"/>
+            <class name="ru.fd.api.bot.print.PrinterStringTestNG"/>
+            <class name="ru.fd.api.bot.print.PrinterToFileTestNG"/>
+        </classes>
+    </test>
+
+</suite>

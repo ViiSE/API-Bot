@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ApiBotNGSuite">
+
+    <test name="ApiBotSuiteTest">
+        <classes>
+            <class name="ru.fd.api.bot.GreetingsWithBannerTestNG"/>
+            <class name="ru.fd.api.bot.GreetingsWithTimeoutTestNG"/>
+        </classes>
+    </test>
+
+</suite>

@@ -39,7 +39,7 @@ settings.json
   "repeat": 1,
   "auth": {
     "type": "Bearer",
-    "token": "<token here>"
+    "token": "'token here'"
   },
   "requests": [
     {
@@ -74,7 +74,7 @@ settings.json
       "url": "/another/point"
     }
   ]
-}
+} 
 </pre>
 
 # Parameters

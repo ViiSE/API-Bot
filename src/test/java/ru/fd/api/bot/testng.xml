@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestNGSuite">
+
+    <suite-files>
+        <suite-file path="api_bot-suite.xml"/>
+        <suite-file path="data/data-suite.xml"/>
+        <suite-file path="entity/entity-suite.xml"/>
+        <suite-file path="file/file-suite.xml"/>
+        <suite-file path="print/print-suite.xml"/>
+        <suite-file path="time/time-suite.xml"/>
+    </suite-files>
+
+</suite>
