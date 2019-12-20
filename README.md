@@ -1,9 +1,3 @@
-<style type="text/css">
-  pre {
-    background-color: #ffffff;
-  }
-</style>
-
 <pre> 
                   `hy`
                  `hmmh.
