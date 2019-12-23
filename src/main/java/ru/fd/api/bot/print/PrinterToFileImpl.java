@@ -34,6 +34,7 @@ public class PrinterToFileImpl implements Printer<File> {
                 bw.newLine();
                 bw.write(result);
                 bw.write("TEST END");
+                bw.newLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

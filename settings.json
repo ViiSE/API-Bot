@@ -1,15 +1,19 @@
 {
-  "filename": "/home/viise/fd-api/api-bot/results",
+  "filename": "/home/viise/fd-api/api-bot/API-Bot/super-results",
   "hostname": "http://localhost:50003",
   "repeat": 1,
   "auth": {
     "type": "Bearer",
-    "token": "<Token here>"
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzU1MjM4MzMsImp0aSI6ImJheWFyZF9zdmlmX3NpdGVfMSIsImlzcyI6ImJheWFyZF9zdmlmX2ZkX2FwaV9zZXJ2aWNlIiwic3ViIjoid3d3LnN2aWYucnUiLCJleHAiOjQ3MzEyODM4MzN9.pJ5XwqB2z2JWd4_UOEEGmKMlPUJTBxYQohkGdAwXAMM"
   },
   "requests": [
     {
       "method": "GET",
-      "url": "/products"
+      "url": "/products",
+      "auth": {
+        "type": "none",
+        "token": "<Token here>"
+      }
     },
     {
       "method": "GET",

@@ -14,7 +14,6 @@ public class BotExecutorDefaultImpl implements BotExecutor {
 
     @Autowired private BotProducer botProducer;
     @Autowired private PrinterProducer printerProducer;
-    @Autowired private DateFormatter dateFormatter;
 
     private final Settings settings;
 
@@ -26,7 +25,6 @@ public class BotExecutorDefaultImpl implements BotExecutor {
     public void startBot() {
         botProducer.getBotDefaultInstance(
                 settings,
-                printerProducer,
-                dateFormatter).execute();
+                printerProducer).execute();
     }
 }

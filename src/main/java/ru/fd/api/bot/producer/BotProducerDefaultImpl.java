@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.fd.api.bot.Bot;
 import ru.fd.api.bot.entity.Settings;
 import ru.fd.api.bot.producer.print.PrinterProducer;
-import ru.fd.api.bot.time.DateFormatter;
 
 @Service("botProducerDefault")
 public class BotProducerDefaultImpl implements BotProducer {
@@ -15,7 +14,7 @@ public class BotProducerDefaultImpl implements BotProducer {
     private ApplicationContext ctx;
 
     @Override
-    public Bot getBotDefaultInstance(Settings settings, PrinterProducer printerProducer, DateFormatter dateFormatter) {
-        return (Bot) ctx.getBean("botDefault", settings, printerProducer, dateFormatter);
+    public Bot getBotDefaultInstance(Settings settings, PrinterProducer printerProducer) {
+        return (Bot) ctx.getBean("botDefault", settings, printerProducer);
     }
 }

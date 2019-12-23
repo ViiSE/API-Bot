@@ -7,7 +7,6 @@ import ru.fd.api.bot.entity.RequestResult;
 import ru.fd.api.bot.entity.RequestResultMapDefaultImpl;
 import ru.fd.api.bot.entity.Settings;
 import ru.fd.api.bot.exception.RequestException;
-import ru.fd.api.bot.print.Printer;
 import ru.fd.api.bot.producer.print.PrinterProducer;
 import ru.fd.api.bot.time.DateFormatter;
 
@@ -19,12 +18,10 @@ public class BotDefaultImpl implements Bot {
 
     private final Settings settings;
     private final PrinterProducer printerProducer;
-    private final DateFormatter dateFormatter;
 
-    public BotDefaultImpl(Settings settings, PrinterProducer printerProducer, DateFormatter dateFormatter) {
+    public BotDefaultImpl(Settings settings, PrinterProducer printerProducer) {
         this.settings = settings;
         this.printerProducer = printerProducer;
-        this.dateFormatter = dateFormatter;
     }
 
     @Override
@@ -33,11 +30,7 @@ public class BotDefaultImpl implements Bot {
             int amountRepeat = settings.repeat();
             for (int i = 0; i < amountRepeat; i++) {
                 for (Request request : settings.requests()) {
-                    RequestResult<Map<String, Object>> reqRes = (RequestResultMapDefaultImpl) request.execute();
-                    Printer<String> printer = printerProducer.getPrinterDefaultInstance(reqRes, dateFormatter);
-                    printerProducer.getPrinterToWindowInstance(printer).print();
-                    printerProducer.getPrinterToFileInstance(printer, settings.fullFilename()).print();
-                }
+                    request.execute(); }
             }
         } catch(RequestException ex) {
             printerProducer.getPrinterToWindowInstance(printerProducer.getPrinterStringInstance(ex.getMessage())).print();
