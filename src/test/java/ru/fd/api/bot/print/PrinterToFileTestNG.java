@@ -39,12 +39,12 @@ public class PrinterToFileTestNG {
         }
     }
 
-//    @AfterClass
-//    @Parameters({"filename"})
-//    public void teardownClass(String testFilename) {
-//        if(TestUtils.deleteTestResourcesFile(testFilename))
-//            System.out.println(String.format("File '%s' is deleted", TestUtils.getTestResourcesFile(testFilename)));
-//        else
-//            System.out.println(String.format("Cannot deleted '%s' file", TestUtils.getTestResourcesFile(testFilename)));
-//    }
+    @AfterClass
+    @Parameters({"filename"})
+    public void teardownClass(String testFilename) {
+        if(TestUtils.deleteTestResourcesFile(testFilename))
+            System.out.println(String.format("File '%s' is deleted", TestUtils.getTestResourcesFile(testFilename)));
+        else
+            System.out.println(String.format("Cannot deleted '%s' file", TestUtils.getTestResourcesFile(testFilename)));
+    }
 }
