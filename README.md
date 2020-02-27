@@ -66,12 +66,34 @@ settings.json
       "url": "/some/point/?with=arg1,arg2"
     },
     {
-      "method": "GET",
-      "url": "/some/point/?with=arg2,arg1"
+      "method": "POST",
+      "url": "/some/post/point",
+      "body": [
+        {
+          "name":"param1",
+          "value":"val1"
+        }
+      ]
     },
     {
-      "method": "GET",
-      "url": "/another/point"
+      "method": "PUT",
+      "url": "/some/put/point",
+      "body": [
+        {
+          "name":"param1",
+          "value":"val1"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "url": "/some/delete/point",
+      "body": [
+        {
+          "name":"param1",
+          "value":"val1"
+        }
+      ]
     }
   ]
 } 
@@ -86,5 +108,9 @@ settings.json
    - <b>token</b> - API token
  - <b>requests</b> - List of requests
    - <b>method</b> - Method type
-   - <b>url</b> - point address (without hostname)
+   - <b>url</b> - Point address (without hostname)
    - (<i>optional</i>) <b>auth</b> - Local authentication method to be written to the header. If it's present and global <b>auth</b> is also present, then the local method will be applied. If both of these methods are absent, bot will throw an exception
+ - <b>body</b> - Body of requests for POST, PUT, and DELETE
+   - <b>name</b> - Param name
+   - <b>value</b> - Param value
+ 
