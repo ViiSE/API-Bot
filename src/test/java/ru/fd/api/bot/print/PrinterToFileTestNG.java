@@ -1,50 +1,46 @@
 package ru.fd.api.bot.print;
 
-import okhttp3.Response;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import ru.fd.api.bot.constant.RequestResults;
-import ru.fd.api.bot.entity.RequestResult;
-import ru.fd.api.bot.entity.RequestResultMapDefaultImpl;
 import ru.fd.api.bot.util.TestUtils;
 
-import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 public class PrinterToFileTestNG {
 
-    private Printer<File> printer;
+    private String filename;
 
     @BeforeClass
-    @Parameters({"message", "filename"})
-    public void setUp(String message, String testFilename) {
-        printer = new PrinterToFileImpl(
-                new PrinterStringImpl(message),
-                TestUtils.getTestResourcesFile(testFilename));
+    public void setUpClass() {
+        filename = TestUtils.getTestResourcesFile("test");
     }
 
     @Test
-    public void print() {
-        File file = printer.print();
-        List<String> content = TestUtils.readResourcesFile(file);
-        System.out.println("File content: ");
-        for(String line: content) {
-            System.out.println(line);
-        }
+    public void print() throws IOException {
+        PrinterToFileImpl printer = new PrinterToFileImpl();
+        printer.print(filename, "hi\n");
+
+        List<String> lines = Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+        lines.forEach(System.out::println);
+        String begin = lines.get(0);
+        String content = lines.get(1);
+        String end = lines.get(2);
+
+        assertEquals("TEST BEGIN", begin);
+        assertEquals("hi", content);
+        assertEquals("TEST END", end);
     }
 
     @AfterClass
-    @Parameters({"filename"})
-    public void teardownClass(String testFilename) {
-        if(TestUtils.deleteTestResourcesFile(testFilename))
-            System.out.println(String.format("File '%s' is deleted", TestUtils.getTestResourcesFile(testFilename)));
-        else
-            System.out.println(String.format("Cannot deleted '%s' file", TestUtils.getTestResourcesFile(testFilename)));
+    public void teardownClass() throws IOException {
+        Files.delete(Paths.get(filename));
+        System.out.println("File " + filename + " was deleted successfully!");
     }
 }

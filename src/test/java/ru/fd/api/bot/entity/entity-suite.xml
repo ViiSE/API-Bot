@@ -12,11 +12,19 @@
 
         <parameter name="url" value="http://www.api.bot/rest/points/point"/>
         <parameter name="method" value="GET"/>
+        <parameter name="evalTime" value="1214353454234534"/>
 
         <classes>
             <class name="ru.fd.api.bot.entity.AuthStringTokenTestNG"/>
-            <class name="ru.fd.api.bot.entity.RequestResultMapDefaultTestNG"/>
-            <class name="ru.fd.api.bot.entity.SettingsDefaultTestNG"/>
+            <class name="ru.fd.api.bot.entity.AuthStringNoneTestNG"/>
+            <class name="ru.fd.api.bot.entity.DeleteResponseWithUrlTestNG"/>
+            <class name="ru.fd.api.bot.entity.EmptyResponseWithUrlTestNG"/>
+            <class name="ru.fd.api.bot.entity.GetResponseWithUrlTestNG"/>
+            <class name="ru.fd.api.bot.entity.PostResponseWithUrlTestNG"/>
+            <class name="ru.fd.api.bot.entity.PutResponseWithUrlTestNG"/>
+            <class name="ru.fd.api.bot.entity.ResponseWithBenchTimeTestNG"/>
+            <class name="ru.fd.api.bot.entity.ResponseFormatPrettyTestNG"/>
+            <class name="ru.fd.api.bot.entity.RequestBodyWithListParamsTestNG"/>
         </classes>
     </test>
 

@@ -1,39 +1,45 @@
 package ru.fd.api.bot;
 
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import ru.fd.api.bot.entity.Request;
-import ru.fd.api.bot.entity.RequestResult;
-import ru.fd.api.bot.entity.RequestResultMapDefaultImpl;
+import ru.fd.api.bot.entity.Response;
+import ru.fd.api.bot.entity.ResponseFormat;
 import ru.fd.api.bot.entity.Settings;
 import ru.fd.api.bot.exception.RequestException;
-import ru.fd.api.bot.producer.print.PrinterProducer;
-import ru.fd.api.bot.time.DateFormatter;
-
-import java.util.Map;
+import ru.fd.api.bot.print.Printer;
+import ru.fd.api.bot.print.PrinterToFileImpl;
 
 @Component("botDefault")
-@Scope("prototype")
 public class BotDefaultImpl implements Bot {
 
-    private final Settings settings;
-    private final PrinterProducer printerProducer;
+    private final Printer<String> printer;
+    private final Printer<String> printerFile;
+    private final ResponseFormat<String> responseFormat;
 
-    public BotDefaultImpl(Settings settings, PrinterProducer printerProducer) {
-        this.settings = settings;
-        this.printerProducer = printerProducer;
+    public BotDefaultImpl(
+            @Qualifier("printerToWindow") Printer<String> printer,
+            @Qualifier("printerToFile") Printer<String> printerFile,
+            ResponseFormat<String> responseFormat) {
+        this.printer = printer;
+        this.printerFile = printerFile;
+        this.responseFormat = responseFormat;
     }
 
     @Override
-    public void execute() {
+    public void execute(Settings<Request> settings) {
         try {
             int amountRepeat = settings.repeat();
             for (int i = 0; i < amountRepeat; i++) {
                 for (Request request : settings.requests()) {
-                    request.execute(); }
+                    Response response = request.execute();
+                    String respFormat = responseFormat.format(response);
+                    ((PrinterToFileImpl) printerFile).print(settings.fullFilename(), respFormat);
+                    printer.print(respFormat);
+                }
             }
         } catch(RequestException ex) {
-            printerProducer.getPrinterToWindowInstance(printerProducer.getPrinterStringInstance(ex.getMessage())).print();
+            printer.print(ex.getMessage());
         }
     }
 }

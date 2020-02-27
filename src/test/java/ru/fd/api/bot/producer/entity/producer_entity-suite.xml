@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ProducerEntitySuite">
+
+    <test name="ProducerEntitySuiteTest">
+        <parameter name="type" value="Bearer"/>
+        <parameter name="token" value="'Token here'"/>
+
+        <packages>
+            <package name="ru.fd.api.bot.producer.entity"/>
+        </packages>
+    </test>
+
+</suite>

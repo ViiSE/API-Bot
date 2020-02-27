@@ -12,67 +12,13 @@
         <parameter name="token" value="'Token here'"/>
 
         <parameter name="method" value="GET"/>
+        <parameter name="postMethod" value="POST"/>
         <parameter name="url" value="/rest/points/point"/>
 
         <classes>
-            <class name="ru.fd.api.bot.data.AuthPojoTestNG">
-                <parameter name="jsonAuth" value= "{ &quot;type&quot;: &quot;Bearer&quot;, &quot;token&quot;: &quot;'Token here'&quot; }"/>
-                <parameter name="jsonAuthWithoutToken" value= "{ &quot;type&quot;: &quot;none&quot; }"/>
-            </class>
-            <class name="ru.fd.api.bot.data.RequestPojoTestNG">
-                <parameter name="jsonReq" value=
-                "{ &quot;method&quot;: &quot;GET&quot;,
-                   &quot;url&quot;: &quot;/rest/points/point&quot;,
-                   &quot;auth&quot;: {
-                        &quot;type&quot;: &quot;Bearer&quot;, &quot;token&quot;: &quot;'Token here'&quot;
-                   }
-                 }"/>
-                <parameter name="jsonReqWithoutAuth" value=
-                        "{ &quot;method&quot;: &quot;GET&quot;, &quot;url&quot;: &quot;/rest/points/point&quot; }"/>
-            </class>
-            <class name="ru.fd.api.bot.data.SettingsPojoTestNG">
-                <parameter name="jsonSet" value=
-                "{ &quot;filename&quot;: &quot;/some/file&quot;,
-                   &quot;hostname&quot;: &quot;http://localhost:8080&quot;,
-                   &quot;repeat&quot;: 1,
-                   &quot;auth&quot;: {
-                        &quot;type&quot;: &quot;Bearer&quot;, &quot;token&quot;: &quot;'Token here'&quot;
-                   },
-                   &quot;requests&quot;: [
-                        { &quot;method&quot;: &quot;GET&quot;,
-                          &quot;url&quot;: &quot;/rest/points/point&quot;,
-                          &quot;auth&quot;: {
-                              &quot;type&quot;: &quot;Bearer&quot;, &quot;token&quot;: &quot;'Token here'&quot;
-                          }
-                        },
-                        { &quot;method&quot;: &quot;GET&quot;,
-                          &quot;url&quot;: &quot;/rest/points/point&quot;,
-                          &quot;auth&quot;: {
-                              &quot;type&quot;: &quot;none&quot;
-                          }
-                        }
-                   ]
-                 }"/>
-                <parameter name="jsonSetWithoutAuth" value=
-                "{ &quot;filename&quot;: &quot;/some/file&quot;,
-                   &quot;hostname&quot;: &quot;http://localhost:8080&quot;,
-                   &quot;repeat&quot;: 1,
-                   &quot;requests&quot;: [
-                        { &quot;method&quot;: &quot;GET&quot;,
-                          &quot;url&quot;: &quot;/rest/points/point&quot;,
-                          &quot;auth&quot;: {
-                              &quot;type&quot;: &quot;Bearer&quot;, &quot;token&quot;: &quot;'Token here'&quot;
-                          }
-                        },
-                        { &quot;method&quot;: &quot;GET&quot;,
-                          &quot;url&quot;: &quot;/rest/points/point&quot;,
-                          &quot;auth&quot;: {
-                              &quot;type&quot;: &quot;none&quot;
-                          }
-                        }
-                   ]
-                }"/>
-            </class>
+            <class name="ru.fd.api.bot.data.AuthPojoTestNG"/>
+            <class name="ru.fd.api.bot.data.RequestPojoTestNG"/>
+            <class name="ru.fd.api.bot.data.SettingsPojoTestNG"/>
         </classes>
     </test>
 

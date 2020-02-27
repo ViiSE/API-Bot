@@ -4,14 +4,8 @@
 <suite name="PrintSuite">
 
     <test name="PrintSuiteTest">
-        <parameter name="filename" value="printer-test"/>
-        <parameter name="url" value="http://www.api.bot/rest/points/point"/>
-        <parameter name="method" value="GET"/>
-        <parameter name="message" value="hi"/>
-
         <classes>
-            <class name="ru.fd.api.bot.print.PrinterDefaultTestNG"/>
-            <class name="ru.fd.api.bot.print.PrinterStringTestNG"/>
+            <class name="ru.fd.api.bot.print.PrinterToWindowTestNG"/>
             <class name="ru.fd.api.bot.print.PrinterToFileTestNG"/>
         </classes>
     </test>

@@ -1,23 +1,12 @@
 package ru.fd.api.bot.print;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("printerToWindow")
-@Scope("prototype")
-public class PrinterToWindowImpl implements Printer<Void> {
-
-    private final Printer<String> printer;
-
-    public PrinterToWindowImpl(Printer<String> printer) {
-        this.printer = printer;
-    }
+public class PrinterToWindowImpl implements Printer<String> {
 
     @Override
-    public Void print() {
-        String result = printer.print();
-        System.out.println(result);
-
-        return null;
+    public void print(String message) {
+        System.out.println(message);
     }
 }

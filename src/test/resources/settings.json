@@ -37,6 +37,48 @@
     {
       "method": "GET",
       "url": "/another/point"
+    },
+    {
+      "method": "POST",
+      "url": "/another/post/point",
+      "body": [
+        {
+          "name": "paramName1",
+          "value": "val1"
+        },
+        {
+          "name": "paramName2",
+          "value": "val2"
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "url": "/another/put/point",
+      "body": [
+        {
+          "name": "paramName1",
+          "value": "val1"
+        }
+      ]
+    },
+    {
+      "method": "DELETE",
+      "url": "/another/delete/point",
+      "body": [
+        {
+          "name": "paramName1",
+          "value": "val1"
+        },
+        {
+          "name": "paramName2",
+          "value": "val2"
+        },
+        {
+          "name": "paramName3",
+          "value": "val3"
+        }
+      ]
     }
   ]
 }

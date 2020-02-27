@@ -1,34 +1,48 @@
 package ru.fd.api.bot.producer.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-import ru.fd.api.bot.entity.*;
-import ru.fd.api.bot.producer.print.PrinterProducer;
-import ru.fd.api.bot.time.DateFormatter;
-
-import java.util.Map;
+import ru.fd.api.bot.data.RequestBodyPojo;
+import ru.fd.api.bot.entity.Auth;
+import ru.fd.api.bot.entity.Request;
+import ru.fd.api.bot.entity.RequestBody;
 
 @Service("requestProducerDefault")
 public class RequestProducerDefaultImpl implements RequestProducer {
 
-    @Autowired
-    private ApplicationContext ctx;
+    private final ApplicationContext ctx;
 
-    @Override
-    public Request<Map<String, Object>> getGetRequestDefaultInstance(String method, String url, Auth<String> auth, RequestResultProducer requestResultProducer) {
-        return (GetRequestDefaultImpl) ctx.getBean("getRequestDefault", method, url, auth, requestResultProducer);
+    public RequestProducerDefaultImpl(ApplicationContext ctx) {
+        this.ctx = ctx;
     }
 
     @Override
-    public Request<Map<String, Object>> getBenchmarkRequestInstance(Request<Map<String, Object>> request) {
-        return (BenchmarkRequestImpl) ctx.getBean("benchmarkRequest", request);
+    public Request getGetRequestInstance(String url, Auth<String> auth, ResponseProducer responseProducer) {
+        return (Request) ctx.getBean("getRequest", url, auth, responseProducer);
     }
 
     @Override
-    public Request<Map<String, Object>> getPrintableRequestInstance(Request<Map<String, Object>> request, PrinterProducer printerProducer, DateFormatter dateFormatter, String fullFilename) {
-        return (PrintableRequestImpl) ctx.getBean("printableRequest", request, printerProducer, dateFormatter, fullFilename);
+    public Request getPostRequestInstance(String url, Auth<String> auth, RequestBody<RequestBodyPojo> requestBody, ResponseProducer responseProducer) {
+        return (Request) ctx.getBean("postRequest", url, auth, requestBody, responseProducer);
+    }
+
+    @Override
+    public Request getPutRequestInstance(String url, Auth<String> auth, RequestBody<RequestBodyPojo> requestBody, ResponseProducer responseProducer) {
+        return (Request) ctx.getBean("putRequest", url, auth, requestBody, responseProducer);
+    }
+
+    @Override
+    public Request getDeleteRequestInstance(String url, Auth<String> auth, RequestBody<RequestBodyPojo> requestBody, ResponseProducer responseProducer) {
+        return (Request) ctx.getBean("deleteRequest", url, auth, requestBody, responseProducer);
+    }
+
+    @Override
+    public Request getEmptyRequestInstance() {
+        return ctx.getBean("emptyRequest", Request.class);
+    }
+
+    @Override
+    public Request getRequestWithBenchInstance(Request request, ResponseProducer responseProducer) {
+        return (Request) ctx.getBean("requestWithBench", request, responseProducer);
     }
 }
-
-

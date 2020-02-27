@@ -1,6 +1,5 @@
 package ru.fd.api.bot.print;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
@@ -9,22 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 @Component("printerToFile")
-@Scope("prototype")
-public class PrinterToFileImpl implements Printer<File> {
+public class PrinterToFileImpl implements Printer<String> {
 
-    private final Printer<String> printer;
-    private final String fullFilename;
-
-    public PrinterToFileImpl(Printer<String> printer, String fullFilename) {
-        this.printer = printer;
-        this.fullFilename = fullFilename;
-    }
+    private String fullFilename;
 
     @Override
-    public File print() {
+    public void print(String data) {
         try {
-            String result = printer.print();
-
             File file = new File(fullFilename);
             if(file.createNewFile())
                 System.out.println("File " + fullFilename + " is created!");
@@ -32,16 +22,19 @@ public class PrinterToFileImpl implements Printer<File> {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
                 bw.write("TEST BEGIN");
                 bw.newLine();
-                bw.write(result);
+                bw.write(data);
                 bw.write("TEST END");
                 bw.newLine();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-
-            return file;
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public void print(String fullFilename, String data) {
+        this.fullFilename = fullFilename;
+        print(data);
     }
 }
